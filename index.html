@@ -1,0 +1,486 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <title>100%Opositor</title>
+    <meta charset="utf-8">    
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="icon" href="img/favicon.jpeg" type="image/x-icon">
+    <link rel="shortcut icon" href="img/favicon.ico" type="image/x-icon" />
+    <meta name="description" content="Your description">
+    <meta name="keywords" content="Your keywords">
+    <meta name="author" content="Your name">
+    <meta name = "format-detection" content = "telephone=no" />
+    <!--CSS-->
+    <link rel="stylesheet" href="css/bootstrap.css" >
+    <link rel="stylesheet" href="css/style.css">
+    <link rel="stylesheet" href="css/animate.css">
+    <link rel="stylesheet" href="css/touchTouch.css">
+    <link rel="stylesheet" href="fonts/font-awesome.css">
+    <!--JS-->
+    <script src="js/jquery.js"></script>
+    <script src="js/jquery-migrate-1.2.1.min.js"></script>
+    <script src="js/superfish.js"></script>
+    <script src="js/jquery.easing.1.3.js"></script>
+    <script src="js/jquery.mobilemenu.js"></script>
+    <script src="js/jquery.equalheights.js"></script>
+    <script src="js/jquery.isotope.min.js"></script>
+    <script src="js/touchTouch.jquery.js"></script>
+    <script>
+     $(window).load(function() {
+     // Initialize the gallery
+        $('.thumb-pad1 figure a').touchTouch();
+    });
+</script>
+
+<script src="js/wow/wow.js"></script>
+<script src="js/wow/device.min.js"></script>
+<script>
+    $(document).ready(function () {       
+      if ($('html').hasClass('desktop')) {
+        new WOW().init();
+    }   
+});
+</script>
+<script>	
+    $(window).load( function(){	
+        
+        //isotope
+        var $container = $('#container');
+            //Run to initialise column sizes
+        updateSize();
+        
+            //Load masonry when images all loaded
+        $container.imagesLoaded( function(){
+            
+            $container.isotope({
+                    // options
+                itemSelector : '.element',	
+                layoutMode : 'masonry',
+                transformsEnabled: true,
+                columnWidth: function( containerWidth ) {
+                    containerWidth = $browserWidth;
+                    return Math.floor(containerWidth / $cols);
+                }
+            });
+        });
+        
+        	    // update columnWidth on window resize
+        $(window).smartresize(function(){  
+            updateSize();
+            $container.isotope( 'reLayout' );
+        });
+        
+            //Set item size
+        function updateSize() {
+            $browserWidth = $container.width();
+            $cols = 4;
+            
+            if ($browserWidth >= 1170) {
+                $cols = 4;
+            }
+            else if ($browserWidth >= 767 && $browserWidth < 1170) {
+                $cols = 3;
+            }
+            else if ($browserWidth >= 480 && $browserWidth < 767) {
+                $cols = 2;
+            }
+            else if ($browserWidth >= 220 && $browserWidth < 480) {
+                $cols = 1;
+            }
+                //console.log("Browser width is:" + $browserWidth);
+                //console.log("Cols is:" + $cols);
+            
+                // $gutterTotal = $cols * 20;
+        		$browserWidth = $browserWidth; // - $gutterTotal;
+                $itemWidth = $browserWidth / $cols;
+                $itemWidth = Math.floor($itemWidth);
+                
+                $(".element").each(function(index){
+                    $(this).css({"width":$itemWidth+"px"});             
+                });
+                
+                
+                
+                var $optionSets = $('#options .option-set'),
+                $optionLinks = $optionSets.find('a');
+                
+                $optionLinks.click(function(){
+                   var $this = $(this);
+        	    // don't proceed if already selected
+                   if ( $this.hasClass('selected') ) {
+                     return false;
+                 }
+                 var $optionSet = $this.parents('.option-set');
+                 $optionSet.find('.selected').removeClass('selected');
+                 $this.addClass('selected');
+                 
+        	    // make option object dynamically, i.e. { filter: '.my-filter-class' }
+                 var options = {},
+                 key = $optionSet.attr('data-option-key'),
+                 value = $this.attr('data-option-value');
+        	    // parse 'false' as false boolean
+                 value = value === 'false' ? false : value;
+                 options[ key ] = value;
+                 if ( key === 'layoutMode' && typeof changeLayoutMode === 'function' ) {
+        	      // changes in layout modes need extra logic
+                     changeLayoutMode( $this, options )
+                 } else {
+        	      // otherwise, apply new options
+                     $container.isotope( options );
+                 }
+                 
+                 return false;
+             });		
+                
+            };
+        });
+    </script> 
+<!--[if lt IE 9]>
+    <div style='text-align:center'><a href="http://windows.microsoft.com/en-US/internet-explorer/products/ie/home?ocid=ie6_countdown_bannercode"><img src="http://storage.ie6countdown.com/assets/100/images/banners/warning_bar_0000_us.jpg" border="0" height="42" width="820" alt="You are using an outdated browser. For a faster, safer browsing experience, upgrade for free today." /></a></div>  
+<![endif]-->
+
+  <!-- HTML5 shim and Respond.js IE8 support of HTML5 elements and media queries -->
+  <!--[if lt IE 9]>
+    <script src="https://oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script>
+    <script src="https://oss.maxcdn.com/libs/respond.js/1.3.0/respond.min.js"></script>
+<![endif]-->
+</head>
+<body>
+    <!--header-->
+    <header>
+        <div class="follow-box">
+            <div class="container">
+                <ul>
+                    <li><a href="https://x.com/DrAnimalitos" target="_blank" rel="noopener noreferrer" class="fa fa-twitter"></a></li>
+                    <li><a href="https://www.youtube.com/@tuanimalit0" target="_blank" rel="noopener noreferrer" class="fa fa-youtube"></a></li>
+                    <li><a href="https://www.facebook.com/Dr.Aniamlitos/" target="_blank" rel="noopener noreferrer" class="fa fa-facebook"></a></li>
+                    <li><a href="https://www.instagram.com/dr.animalitos/" target="_blank" rel="noopener noreferrer" class="fa fa-instagram"></a></li>
+                </ul>
+            </div>
+        </div>
+        <div class="container">
+            <h1 class="navbar-brand navbar-brand_"><img width="400" height="90" src="img/git2.gif" class="" alt="" decoding=""><a href="index.html"></a></h1>
+            <nav class="navbar navbar-default navbar-static-top tm_navbar clearfix" role="navigation">
+                <ul class="nav sf-menu clearfix">
+                    <li class="active"><a href="index.html">Inicio</a></li>
+                    <li class="sub-menu"><a href="index-1.html">Noticias</a><span></span>
+                        <ul class="submenu">
+                            <li><a href="#">Ultima Hora</a><span></span>
+                              <ul class="submenu">
+                                <li><a href="noti5.html">Maia Corina Machado</a></li>
+                                <li><a href="noti7.html">Nicolas Maduro</a></li>
+                                <li><a href="noti3.html">El Regimen</a></li>
+                                <li><a href="noti2.html">Oposicion</a></li>
+                            </ul>  
+                        </li>
+                    </ul>
+                    <li><a href="about.html">Sobre nosotros</a></li>
+                    <li><a href="contactos.html">contactos</a></li>
+                </ul>
+            </nav>
+        </div>
+    </header>
+    <div class="global">
+        <div class="bg_pic">
+            <div class="wow fadeInUp">
+                <p class="title">Viva</p> <p class="title1">Venezuela</p> <p class="title">libre</p> <p class="title2">de tirania!</p> <br><p class="title">juntos</p> <p class="title2">somos</p> <p class="title"></p> <p class="title1">invencibles!</p>
+                <p class="description">100% Opositor.</p>
+            </div>
+        </div>
+        <!--content-->
+        <div class="container">
+            <h2>ultima hora<em></em></h2>
+            <div class="row">
+                <div class="extra-wrap">
+                    <div class="col-lg-3 col-md-3 col-sm-6 col-xs-6 wow fadeIn">
+                        <div class="thumb-pad1">
+                            <div class="thumbnail">
+                                <figure><img src="img/noti1.webp" alt=""></figure>
+                                <div class="caption">
+                                    <p>La respuesta contundente de María Corina Machado a la acusación en su contra por “traición a la patria  <a href="noti1.html">Leer mas</a></p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-lg-3 col-md-3 col-sm-6 col-xs-6 wow fadeIn">
+                        <div class="thumb-pad1">
+                            <div class="thumbnail">
+                                <figure><img src="img/noti2.webp" alt=""></figure>
+                                <div class="caption">
+                                    <p>Primero Justicia: En vez de mostrar las actas, Maduro decide destruir la educación  <a href="noti2.html">Leer mas</a></p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-lg-3 col-md-3 col-sm-6 col-xs-6 wow fadeIn">
+                        <div class="thumb-pad1">
+                            <div class="thumbnail">
+                                <figure><img src="img/noti3.webp" alt=""></figure>
+                                <div class="caption">
+                                    <p>Omar González: Maduro retrocede ante advertencias de Trump  <a href="noti3.html">Leer mas</a></p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-lg-3 col-md-3 col-sm-6 col-xs-6 wow fadeIn">
+                        <div class="thumb-pad1">
+                            <div class="thumbnail">
+                                <figure><img src="img/noti4.webp" alt=""></figure>
+                                <div class="caption">
+                                    <p>Delsa Solórzano felicitó a Marco Rubio tras su nombramiento como Secretario de Estado de EEUU.  
+                                        <a href="noti4.html">Leer mas</a></p>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-lg-3 col-md-3 col-sm-6 col-xs-6 wow fadeIn">
+                            <div class="thumb-pad1">
+                                <div class="thumbnail">
+                                    <figure><img src="img/noti5.webp" alt=""></figure>
+                                    <div class="caption">
+                                        <p>Un año después de ganar las primarías, María Corina Machado lucha para que vuelva la democracia a Venezuela  <a href="noti5.html">Leer mas</a></p>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-lg-3 col-md-3 col-sm-6 col-xs-6 wow fadeIn">
+                            <div class="thumb-pad1">
+                                <div class="thumbnail">
+                                    <figure><img src="img/noti6.webp" alt=""></figure>
+                                    <div class="caption">
+                                        <p>Delsa Solórzano respondió a Yamandú Orsi, candidato presidencial izquierdista del Frente Amplio en Uruguay  <a href="noti6.html">Leer mas</a></p>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-lg-3 col-md-3 col-sm-6 col-xs-6 wow fadeIn">
+                            <div class="thumb-pad1">
+                                <div class="thumbnail">
+                                    <figure><img src="img/noti7.webp" alt=""></figure>
+                                    <div class="caption">
+                                        <p>Informe de Amnistía Internacional acusó a Nicolás Maduro de torturar a niños en Venezuela  <a href="noti7.html">Leer mas</a></p>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-lg-3 col-md-3 col-sm-6 col-xs-6 wow fadeIn">
+                            <div class="thumb-pad1">
+                                <div class="thumbnail">
+                                    <figure><img src="img/noti8.webp" alt=""></figure>
+                                    <div class="caption">
+                                        <p>Maduro le mendiga a Trump el cese total de las sanciones petroleras  <a href="noti8.html">Leer mas</a></p>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="clearfix"></div>
+                    <div class="banner-box">
+                        <div class="col-lg-8 col-md-7 col-sm-8 wow fadeInLeft" data-wow-duration="0.4s">
+                            <div>
+                                <p class="title">100% Oposicion, Noticias, & loterias</p>
+                                <p class="description">Viva Venezuela, Libre de Dictadura</p>
+                            </div>
+                        </div>
+                        <div class="col-lg-4 col-md-5 col-sm-4 wow fadeInLeft" data-wow-duration="0.2s">
+                            <figure><img src="img/git2.gif" alt=""></figure>
+                        </div>
+                    </div>
+                    <div class="clearfix"></div>
+                    <div class="col-lg-12">
+                        <h2 class="clr1">Informacion de las Loterias de animalitos.<em></em></h2>
+                        <div class="izotopeBox">
+                            <div class="container">
+                                <div id="options" class="clearfix">
+                                  <ul id="filters" class="pagination option-set clearfix wow fadeInRight" data-option-key="filter">
+                                    <li><a href="#filter" data-option-value="*" class="selected">Animalitos</a></li>
+                                </ul>
+                            </div>
+                            <div class="izotope-box">
+                                <div id="container" class="clearfix">
+                                    <div class="element transition first_category wow fadeIn" data-category="transition">
+                                        <div class="thumb-pad1 clr1">
+                                            <div class="thumbnail">
+                                                <figure><a href="img/info/sf_granja.jpg"><em></em><img src="img/info/sf_granja.jpg" alt=""></a></figure>
+                                                <div class="caption">
+                                                    <p>Loteria Granja Millonaria  <a href="#"></a></p>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="element transition second_category wow fadeIn" data-category="transition">
+                                        <div class="thumb-pad1 clr1">
+                                            <div class="thumbnail">
+                                                <figure><a href="img/info/sf_loto.jpg"><em></em><img src="img/info/sf_loto.jpg" alt=""></a></figure>
+                                                <div class="caption">
+                                                    <p>Loteria Loto Activo  <a href="#"></a></p>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="element transition third_category wow fadeIn" data-category="transition">
+                                        <div class="thumb-pad1 clr1">
+                                            <div class="thumbnail">
+                                                <figure><a href="img/info/sf_guacharo.jpg"><em></em><img src="img/info/sf_guacharo.jpg" alt=""></a></figure>
+                                                <div class="caption">
+                                                    <p>Loteria GuacharoActivo   <a href="#"></a></p>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="element transition fifth_category wow fadeIn" data-category="transition">
+                                        <div class="thumb-pad1 clr1">
+                                            <div class="thumbnail">
+                                                <figure><a href="img/info/sf_rey.jpg"><em></em><img src="img/info/sf_rey.jpg" alt=""></a></figure>
+                                                <div class="caption">
+                                                    <p>Loteria Loto Rey  <a href="#"></a></p>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    
+                                    
+                                    <div class="element transition first_category wow fadeIn" data-category="transition">
+                                        <div class="thumb-pad1 clr1">
+                                            <div class="thumbnail">
+                                                <figure><a href="img/info/sf_chance.jpg"><em></em><img src="img/info/sf_chance.jpg" alt=""></a></figure>
+                                                <div class="caption">
+                                                    <p>Loteria Chance Animalitos  <a href="#"></a></p>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="element transition second_category wow fadeIn" data-category="transition">
+                                        <div class="thumb-pad1 clr1">
+                                            <div class="thumbnail">
+                                                <figure><a href="img/info/sf_rd.jpg"><em></em><img src="img/info/sf_rd.jpg" alt=""></a></figure>
+                                                <div class="caption">
+                                                    <p>Loteria Loto Internacional  <a href="#"></a></p>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="element transition third_category wow fadeIn" data-category="transition">
+                                        <div class="thumb-pad1 clr1">
+                                            <div class="thumbnail">
+                                                <figure><a href="img/info/sf_granjita.jpg"><em></em><img src="img/info/sf_granjita.jpg" alt=""></a></figure>
+                                                <div class="caption">
+                                                    <p>Loteria Granjita Oficial  <a href="#"></a></p>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="element transition fifth_category wow fadeIn" data-category="transition">
+                                        <div class="thumb-pad1 clr1">
+                                            <div class="thumbnail">
+                                                <figure><a href="img/info/sf_granjazo.jpg"><em></em><img src="img/info/sf_granjazo.jpg" alt=""></a></figure>
+                                                <div class="caption">
+                                                    <p>Loteria Granjazo Millonario  <a href="#"></a></p>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="clearfix"></div>
+                <div class="banner-box2">
+                    <div class="col-lg-8 col-md-8 col-sm-8 wow fadeInLeft" data-wow-duration="0.3s">
+                        <div>
+                            <div class="caption">
+                                <p class="title">Informacion Vip.. Super Fijos</p>
+                                <p class="description">3 Super Fijos <br><a href="#"></a></p>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-lg-4 col-md-4 col-sm-4 wow fadeInLeft">
+                        <figure><img src="img/info/git.gif" alt=""></figure>
+                    </div>
+                </div>
+                <div class="clearfix"></div>
+                <div class="col-lg-12 extra-wrap">
+                    <h2 class="clr2">Vida & Salud<em></em></h2>
+                    <div class="row">
+                        <div class="col-lg-4 col-md-4 col-sm-4 wow fadeInUp" data-wow-duration="0.4s">
+                            <div class="thumb-pad2">
+                                <div class="thumbnail">
+                                    <figure><img src="img/rece1.webp" alt=""></figure>
+                                    <div class="caption">
+                                        <p class="title">Quema la grasa del vientre</p>
+                                        <p>La especia que quema la grasa del vientre y reduce la circunferencia de la cintura.</p>
+                                        <a href="rece1.html" class="btn-default btn1">Leer mas</a>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-lg-4 col-md-4 col-sm-4 wow fadeInUp" data-wow-duration="0.2s">
+                            <div class="thumb-pad2">
+                                <div class="thumbnail">
+                                    <figure><img src="img/rece2.webp" alt=""></figure>
+                                    <div class="caption">
+                                        <p class="title">Este es el efecto en la salud de los hombres por orinar sentados</p>
+                                        <p>Uno de los hábitos más frecuentes en los hombres es orinar de pie, esto porque les resulta más fácil y práctico, especialmente cuando se encuentran en lugares públicos o no hay acceso a un sanitario.</p>
+                                        <a href="rece2.html" class="btn-default btn1">Leer mas</a>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-lg-4 col-md-4 col-sm-4 wow fadeInUp">
+                            <div class="thumb-pad2">
+                                <div class="thumbnail">
+                                    <figure><img src="img/rece3.webp" alt=""></figure>
+                                    <div class="caption">
+                                        <p class="title">Ni salmón ni atún: cuál es el pescado que reduce el colesterol, es bueno para la piel y fácil de digerir</p>
+                                        <p>Para llevar una dieta sana y equilibrada, no pueden faltar en ella los pescados, que son fuente de proteínas saludables y sus nutrientes velan por nuestro bienestar general.</p>
+                                        <a href="rece3.html" class="btn-default btn1">Leer mas</a>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-lg-12 media-box">
+                    <h2 class="clr3">Videos Recomendados<em></em></h2>
+                    <div class="row">
+                        <div class="col-lg-8 col-md-8 col-sm-6">
+                            <div class="thumb-pad2">
+                                <div class="thumbnail">
+                                    <div class="fw_video"><iframe width="770" height="463" src="https://www.youtube.com/embed/QiiQTHnEsBQ"></iframe></div>
+                                    <div class="caption">
+                                        <p class="title">🔴¡URGENTE ULTIMA HORA.!Maria Corina Machado pide a los venezolanos hacer lo que corresponda el 10/01</p>
+                                        <p class="lnk">100% Opositor <span></span> <a href="#"><time datetime=""></time></a></p>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-lg-4 col-md-4 col-sm-6">
+                            <div class="thumb-pad3">
+
+                            </div>
+                            <div class="thumb-pad3">
+                             
+                            </div>
+                        </div>
+                        <div class="thumb-pad3">
+                            
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>  
+</div> 
+<!--footer-->
+<footer>
+    <div class="container">
+        <p>E-mail: <a href="https://www.google.com/intl/es-419/gmail/about/" target="_blank" rel="noopener noreferrer">alexandermata834@gmail.com</a></p>
+        <p>100% Opositor &copy; <em id="copyright-year"></em> All Rights Reserved <span></span><br> <a href="#"></a></p>
+    </div>
+</footer>
+<script src="js/bootstrap.min.js"></script>
+<script src="js/tm-scripts.js"></script>
+</body>
+</html>
